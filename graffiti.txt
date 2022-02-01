@@ -3,7 +3,7 @@ Spooooner
 dfdfg
 jgfdxhgf
 
-Mango on a fork
+Mango oasdfadsfn a fork
 
 I like Cheese!!!
 
@@ -27,4 +27,9 @@ sssssssstutututu
 
 there is not a single braincell left in my head
 
+<<<<<<< HEAD
 at least you have a head
+=======
+anything
+something else
+>>>>>>> origin/master
