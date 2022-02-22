@@ -1,7 +1,7 @@
 import pygame, sys, math
 from WallTile import *
 from Spawner import *
-def loadLevel (lev):
+def loadLevel (lev): 
     f = open(lev, 'r')
     lines = f.readlines()
     f.close()
