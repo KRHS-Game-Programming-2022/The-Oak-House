@@ -1,40 +1,37 @@
 import pygame, sys, math
-from WallTile import *
-from Spawner import *
-def loadLevel (lev): 
+from Wall import *
+from Spawner import*
+
+def loadLevel(lev):
     f = open(lev, 'r')
     lines = f.readlines()
     f.close()
-   
+
+
+
     size = 50
-    offset = size/1
+    offset = size/2
     tiles = []
-    newLines = []
     walls = []
     spawners = []
-   
+
+    newLines = []
     for line in lines:
-        newLine = ""
+        newline = ""
         for c in line:
-            if c != "\n":  
-                newLine += c
-        newLines += [newLine]
-       
+            if c != "\n":
+                newline += c
+        newLines += [newline]
+
     lines = newLines
-   
+
     for y, line in enumerate(lines):
         for x, c in enumerate(line):
             if c == "#":
                 walls += [Wall([x*size+offset, y*size+offset])]
-            if c == "X":
+            elif c == "X":
                 spawners += [Spawner([x*size+offset, y*size+offset])]
     tiles = [walls,
-            spawners]
+             spawners]
+
     return tiles
-   
-   
-
-
-loadLevel("Levels/example.lvl")
-
-
