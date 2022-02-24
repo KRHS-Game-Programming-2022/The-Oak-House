@@ -13,9 +13,9 @@ class Player:
 
         stillImage = pygame.image.load(os.path.join("assets", "images", "player", "still.png"))
         leftImages = []
-        for i in range(2,10):
-            leftImages+=[pygame.image.load("assets/images/player/Player Animations/WalkCycle000"+str(i)+".png")]
-        leftImages += [pygame.image.load("assets/images/player/Player Animations/WalkCycle000"+str(i)+".png")]
+        for i in range(2, 10):
+            leftImages += [pygame.image.load("assets/images/player/Player Animations/WalkCycle000" + str(i) + ".png")]
+        leftImages += [pygame.image.load("assets/images/player/Player Animations/WalkCycle000" + str(i) + ".png")]
         rightImage = pygame.image.load(os.path.join("assets", "images", "player", "right.png"))
 
         self.images = {"still": stillImage, "left": leftImages, "right": rightImage}
