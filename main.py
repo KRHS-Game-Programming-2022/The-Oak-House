@@ -2,13 +2,15 @@ import pygame, sys, math
 from WallTile import *
 from Spawner import *
 import user.player as player
-def loadLevel (lev):
+
+
+def loadLevel(lev):
     f = open(lev, 'r')
     lines = f.readlines()
     f.close()
 
     size = 50
-    offset = size/1
+    offset = size / 1
     tiles = []
     newLines = []
     walls = []
@@ -26,24 +28,22 @@ def loadLevel (lev):
     for y, line in enumerate(lines):
         for x, c in enumerate(line):
             if c == "#":
-                walls += [Wall([x*size+offset, y*size+offset])]
+                walls += [Wall([x * size + offset, y * size + offset])]
             if c == "X":
-                spawners += [Spawner([x*size+offset, y*size+offset])]
+                spawners += [Spawner([x * size + offset, y * size + offset])]
     tiles = [walls,
-            spawners]
+             spawners]
     return tiles
 
 
-
-
-#loadLevel("Levels/example.lvl")
+# loadLevel("Levels/example.lvl")
 
 main = True
 size = [800, 800]
 screen = pygame.display.set_mode(size)
 
 player = player.Player()
-s = 5
+step = 5
 
 while main:
     for event in pygame.event.get():
@@ -63,4 +63,3 @@ while main:
                 player.control(0, -step)
             if event.key == pygame.K_RIGHT or event.key == ord('d'):
                 player.control(step, 0)
-

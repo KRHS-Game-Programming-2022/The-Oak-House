@@ -12,10 +12,13 @@ class Player:
         self.speed = [0, 0]
 
         stillImage = pygame.image.load(os.path.join("assets", "images", "player", "still.png"))
-        leftImage = pygame.image.load(os.path.join("assets", "images", "player", "left.png"))
+        leftImages = []
+        for i in range(2,10):
+            leftImages+=[pygame.image.load("assets/images/player/Player Animations/WalkCycle000"+str(i)+".png")]
+        leftImages += [pygame.image.load("assets/images/player/Player Animations/WalkCycle000"+str(i)+".png")]
         rightImage = pygame.image.load(os.path.join("assets", "images", "player", "right.png"))
 
-        self.images = {"still": stillImage, "left": leftImage, "right": rightImage}
+        self.images = {"still": stillImage, "left": leftImages, "right": rightImage}
         self.image = self.images["still"]
 
         self.rect = self.image.get_rect()
