@@ -1,17 +1,37 @@
-import pygame, sys, math, random
-from LevelLoader import *
-from WallTile import*
-from Hud import*
-from Spawner import *
-from SpriteSheet import*
+import pygame, sys, math
+from Wall import *
+from Spawner import*
 
-pygame.init()
+def loadLevel(lev):
+    f = open(lev, 'r')
+    lines = f.readlines()
+    f.close()
 
-if not pygame.font:
-    print("Warning, fonts disabled")
 
-   
-clock = pygame.time.Clock();
 
-size = [1300, 960]
-screen = pygame.display.set_mode(size)
+    size = 50
+    offset = size/2
+    tiles = []
+    walls = []
+    spawners = []
+
+    newLines = []
+    for line in lines:
+        newline = ""
+        for c in line:
+            if c != "\n":
+                newline += c
+        newLines += [newline]
+
+    lines = newLines
+
+    for y, line in enumerate(lines):
+        for x, c in enumerate(line):
+            if c == "#":
+                walls += [Wall([x*size+offset, y*size+offset])]
+            elif c == "X":
+                spawners += [Spawner([x*size+offset, y*size+offset])]
+    tiles = [walls,
+             spawners]
+
+    return tiles
