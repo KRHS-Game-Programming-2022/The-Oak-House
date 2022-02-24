@@ -7,6 +7,8 @@ clock = pygame.time.Clock()
 size = [1000,900]
 screen = pygame.display.set_mode(size)
 
+
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
