@@ -11,46 +11,60 @@ class Player:
         self.headingy = "none"
         self.speed = [0, 0]
 
-        stillImage = pygame.image.load(os.path.join("assets", "images", "player", "still.png"))
-        leftImages = []
-        for i in range(2, 10):
-            leftImages += [pygame.image.load("assets/images/player/Player Animations/WalkCycle000" + str(i) + ".png")]
-        leftImages += [pygame.image.load("assets/images/player/Player Animations/WalkCycle000" + str(i) + ".png")]
-        rightImage = pygame.image.load(os.path.join("assets", "images", "player", "right.png"))
+        stillImages = []
+        stillPath = "assets/images/player/still/"
+        for file in os.listdir(stillPath):
+            if file[-4:] == ".png":
+                stillImages += [pygame.image.load(stillPath + file)]
 
-        self.images = {"still": stillImage, "left": leftImages, "right": rightImage}
-        self.image = self.images["still"]
-
+        self.imagesDict = {"still": stillImages}
+        self.images = self.imagesDict["still"]
+        self.frame = 0
+        self.maxFrame = len(self.images)
+        self.animationDelayMax = 60/2
+        self.animationDelay = 0
+        self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
+
+    def update(self):
+        self.animate()
+        self.move()
 
     def move(self):
         self.speed = [self.speedx, self.speedy]
         self.rect = self.rect.move(self.speed)
 
     def animate(self):
+        self.animationDelay += 1
+        if self.animationDelay > self.animationDelayMax:
+            self.animationDelay = 0
+            self.frame += 1
+            if self.frame >= self.maxFrame:
+                self.frame = 0
+            print(self.frame, len(self.images))
+            self.image = self.images[self.frame]
+
+        """
         if self.headingy == "up":
             if self.headingx == "left":
-                self.image = self.images["left up"]
+                self.images = self.imagesDict["left up"]
             elif self.headingx == "right":
-                self.image = self.images["right up"]
+                self.image = self.imagesDict["right up"]
             elif self.headingx == "none":
-                self.image = self.images["up"]
+                self.images = self.imagesDict["up"]
         elif self.headingy == "down":
             if self.headingx == "left":
-                self.image = self.images["left down"]
+                self.images = self.imagesDict["left down"]
             elif self.headingx == "right":
-                self.image = self.images["right down"]
+                self.images = self.imagesDict["right down"]
             elif self.headingx == "none":
-                self.image = self.images["down"]
+                self.image = self.imagesDict["down"]
         elif self.headingy == "none":
             if self.headingx == "left":
-                self.image = self.images["left"]
+                self.images = self.imagesDict["left"]
             elif self.headingx == "right":
-                self.image = self.images["right"]
-
-    def update(self):
-        self.animate()
-        self.move()
+                self.images = self.imagesDict["right"]
+        """
 
     def control(self, direction: str):
         if direction == "up":
