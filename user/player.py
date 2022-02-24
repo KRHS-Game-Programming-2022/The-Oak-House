@@ -21,7 +21,7 @@ class Player:
         self.images = self.imagesDict["still"]
         self.frame = 0
         self.maxFrame = len(self.images)
-        self.animationDelayMax = 60/2
+        self.animationDelayMax = 60/5
         self.animationDelay = 0
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
