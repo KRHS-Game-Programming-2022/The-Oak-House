@@ -17,7 +17,19 @@ class Player:
             if file[-4:] == ".png":
                 stillImages += [pygame.image.load(stillPath + file)]
 
-        self.imagesDict = {"still": stillImages}
+        leftImages = []
+        rightImages = []
+        leftPath = "assets/images/player/left/"
+        for file in os.listdir(leftPath):
+            if file[-4:] == ".png":
+                leftImages += [pygame.image.load(leftPath + file)]
+                rightImages += [pygame.transform.flip(leftImages[-1], True, False)]
+
+
+
+
+
+        self.imagesDict = {"still": stillImages, "left": leftImages, "right": rightImages}
         self.images = self.imagesDict["still"]
         self.frame = 0
         self.maxFrame = len(self.images)
@@ -41,30 +53,29 @@ class Player:
             self.frame += 1
             if self.frame >= self.maxFrame:
                 self.frame = 0
-            print(self.frame, len(self.images))
             self.image = self.images[self.frame]
 
-        """
         if self.headingy == "up":
             if self.headingx == "left":
-                self.images = self.imagesDict["left up"]
+                self.images = self.imagesDict["left"]
             elif self.headingx == "right":
-                self.image = self.imagesDict["right up"]
+                self.images = self.imagesDict["right"]
             elif self.headingx == "none":
-                self.images = self.imagesDict["up"]
+                self.images = self.imagesDict["still"]
         elif self.headingy == "down":
             if self.headingx == "left":
-                self.images = self.imagesDict["left down"]
+                self.images = self.imagesDict["left"]
             elif self.headingx == "right":
-                self.images = self.imagesDict["right down"]
+                self.images = self.imagesDict["right"]
             elif self.headingx == "none":
-                self.image = self.imagesDict["down"]
+                self.images = self.imagesDict["still"]
         elif self.headingy == "none":
             if self.headingx == "left":
                 self.images = self.imagesDict["left"]
             elif self.headingx == "right":
                 self.images = self.imagesDict["right"]
-        """
+            elif self.headingx == "none":
+                self.images = self.imagesDict["still"]
 
     def control(self, direction: str):
         if direction == "up":
