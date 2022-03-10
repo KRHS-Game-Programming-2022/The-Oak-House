@@ -1,6 +1,8 @@
 import pygame, sys, math
 from Wall import *
 from Spawner import*
+from WallTile import Wall
+
 
 def loadLevel(lev):
     f = open(lev, 'r')
@@ -9,7 +11,7 @@ def loadLevel(lev):
 
 
 
-    size = 50
+    size = 20
     offset = size/2
     tiles = []
     walls = []
