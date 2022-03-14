@@ -1,0 +1,2 @@
+Fonts:
+    assets/fonts/Chiken Skratch.ttf : https://www.dafont.com/chiken-skratch.font
