@@ -15,13 +15,14 @@ mode = "MainMenu"
 
 while main:
     if mode == "MainMenu":
-        bigfont = pygame.font.Font("assets/fonts/Chiken Skratch.ttf", 60)
+        bigfont = pygame.font.Font("assets/fonts/Chiken Skratch.ttf", 55)
         title = bigfont.render("The Oak House", True, (192, 26, 26))
         titleRect=title.get_rect(midtop=[400, 50])
         
         smallfont = pygame.font.Font("assets/fonts/Chiken Skratch.ttf", 30)
         start = smallfont.render("Press Enter to Start", True, (192, 26, 26))
         startRect=start.get_rect(midbottom=[400, 700])
+    
     while mode == "MainMenu":
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
