@@ -15,7 +15,7 @@ mode = "MainMenu"
 
 while main:
     if mode == "MainMenu":
-        bigfont = pygame.font.Font("assets/fonts/Chiken Skratch.ttf", 55)
+        bigfont = pygame.font.Font("assets/fonts/Chiken Skratch.ttf", 5 5)
         title = bigfont.render("The Oak House", True, (192, 26, 26))
         titleRect=title.get_rect(midtop=[400, 50])
         
