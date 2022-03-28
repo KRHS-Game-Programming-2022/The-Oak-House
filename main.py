@@ -73,14 +73,6 @@ while main:
                     player.control("stop down")
 
 
-
-        mouse = pygame.mouse.get_pos()
-        screen.blit(bgImage, bgRect)
-        screen.blit(mainmenuButton.image, mainmenuButton.rect)
-        pygame.display.flip()
-        clock.tick(60)
-
-
         player.update()
 
         screen.fill((0, 0, 0))
