@@ -22,7 +22,6 @@ while main:
         
         playButton = Button("play", [400, 700-30])
         
-
     while mode == "MainMenu":
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -43,6 +42,8 @@ while main:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     mode="PlayGame"
+
+
         screen.fill((0, 0, 0))
         screen.blit(title,titleRect)
         screen.blit(playButton.image, playButton.rect)
