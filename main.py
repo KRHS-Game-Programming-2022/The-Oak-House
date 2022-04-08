@@ -22,7 +22,7 @@ while main:
         
         playButton = Button("play", [400, 700-30])
         
-        creditsButton = Button("credits", [400, 700-30])
+        creditsButton = Button("credits", [400, 600-30])
         
     while mode == "MainMenu":
         for event in pygame.event.get():
