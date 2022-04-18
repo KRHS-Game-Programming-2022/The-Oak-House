@@ -1,5 +1,6 @@
 import pygame, sys, math
 from user.player import Player
+from map.levelLoader import loadLevel
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -10,6 +11,7 @@ screen = pygame.display.set_mode(size)
 
 player = Player()
 step = 5
+currentLevelTiles = {}
 
 mode = "MainMenu"
 
@@ -40,9 +42,10 @@ while main:
         screen.blit(start,startRect)
         pygame.display.flip()
         clock.tick(60)
-    if mode == "PlayGame":
+    if mode == "aPlyGame":
         player = Player()
         step = 5
+        currentLevelTiles = loadLevel("map/levels/Level-room1.lvl")
     while mode == "PlayGame":
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -77,5 +80,7 @@ while main:
 
         screen.fill((0, 0, 0))
         screen.blit(player.image, player.rect)
+        for w in currentLevelTiles["walls"]:
+
         pygame.display.flip()
         clock.tick(60)

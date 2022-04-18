@@ -9,7 +9,6 @@ def loadLevel(lev):
 
     size = 20
     offset = size / 2
-    tiles = []
     walls = []
     spawners = []
 
@@ -29,7 +28,7 @@ def loadLevel(lev):
                 walls += [Wall([x * size + offset, y * size + offset])]
             elif c == "X":
                 spawners += [Spawner([x * size + offset, y * size + offset])]
-    tiles = [walls,
-             spawners]
+    tiles = {"walls": walls, "spawners":
+             spawners}
 
     return tiles
