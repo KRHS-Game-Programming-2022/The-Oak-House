@@ -1,6 +1,5 @@
 import pygame, sys, math
 from user.player import Player
-from map.levelLoader import loadLevel
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -21,9 +20,9 @@ while main:
         title = bigfont.render("The Oak House", True, (192, 26, 26))
         titleRect=title.get_rect(midtop=[400, 50])
         
-        smallfont = pygame.font.Font("assets/fonts/Chiken Skratch.ttf", 30)
-        start = smallfont.render("Press Enter to Start", True, (192, 26, 26))
-        startRect=start.get_rect(midbottom=[400, 700])
+        playButton = Button("play", [400, 700-30])
+
+        creditsButton = Button("credits", [400, 600-30])
 
     while mode == "MainMenu":
         for event in pygame.event.get():
@@ -33,16 +32,26 @@ while main:
                     sys.exit()
                 finally:
                     main = False
+            if event.type == pygame.MOUSEMOTION:
+                playButton.hover(event.pos)
+            if event.type == pygame.MOUSEBUTTONDOWN:           #BUTTONS!!!
+                playButton.clickDown(event.pos)
+
+            if event.type == pygame.MOUSEBUTTONUP:
+                if playButton.clickUp(event.pos):
+                    mode = "PlayGame"
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     mode="PlayGame"
+
+
         screen.fill((0, 0, 0))
         screen.blit(title,titleRect)
-        screen.blit(start,startRect)
+        screen.blit(playButton.image, playButton.rect)
         pygame.display.flip()
         clock.tick(60)
-    if mode == "aPlyGame":
+    if mode == "PlayGame":
         player = Player()
         step = 5
         currentLevelTiles = loadLevel("map/levels/Level-room1.lvl")
