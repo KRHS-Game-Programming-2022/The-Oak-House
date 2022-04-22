@@ -82,5 +82,6 @@ while main:
         screen.blit(player.image, player.rect)
         for w in currentLevelTiles["walls"]:
 
+
         pygame.display.flip()
         clock.tick(60)
