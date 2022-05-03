@@ -57,7 +57,7 @@ while main:
     if mode == "PlayGame":
         player = Player()
         step = 5
-        currentLevelTiles = loadLevel("map/levels/Level-room1.lvl")
+        currentLevelTiles = loadLevel("map/levels/Blank.lvl")
     while mode == "PlayGame":
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
