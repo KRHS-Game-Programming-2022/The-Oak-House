@@ -15,14 +15,14 @@ class Player:
         stillPath = "assets/images/player/still/"
         for file in os.listdir(stillPath):
             if file[-4:] == ".png":
-                stillImages += [pygame.image.load(stillPath + file)]
+                stillImages += [pygame.transform.scale(pygame.image.load(stillPath + file), (20, 40))]
 
         leftImages = []
         rightImages = []
         leftPath = "assets/images/player/left/"
         for file in os.listdir(leftPath):
             if file[-4:] == ".png":
-                leftImages += [pygame.image.load(leftPath + file)]
+                leftImages += [pygame.transform.scale(pygame.image.load(leftPath + file), (20, 40))]
                 rightImages += [pygame.transform.flip(leftImages[-1], True, False)]
 
 
