@@ -6,7 +6,8 @@ class Wall:
         self.size = 20
         if pos is None:
             pos = [self.size / 2, self.size / 2]
-        self.image = pygame.image.load("images/WallTiles/Wall.png")
+        self.image = pygame.image.load("assets/images/environment/Wall.png")
+        self.image = pygame.transform.scale(self.image, (self.size, self.size))
         self.rect = self.image.get_rect(center=pos)
         self.kind = "wall"
 

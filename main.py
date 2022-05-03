@@ -1,4 +1,7 @@
 import pygame, sys, math
+
+from Button import Button
+from map.levelLoader import loadLevel
 from user.player import Player
 
 pygame.init()
@@ -91,6 +94,7 @@ while main:
         screen.blit(player.image, player.rect)
         for w in currentLevelTiles["walls"]:
 
+            screen.blit(w.image, w.rect)
 
         pygame.display.flip()
         clock.tick(60)
